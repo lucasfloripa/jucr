@@ -6,7 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@elciess.ihcok.mongodb.net/jucr`),
+    MongooseModule.forRoot(`mongodb://mongo:27017/jucr`),
     JucrModule
   ]
 })
