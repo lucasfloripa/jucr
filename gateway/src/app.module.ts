@@ -10,7 +10,7 @@ import { GraphQLModule } from '@nestjs/graphql'
       gateway: {
         supergraphSdl: new IntrospectAndCompose({
           subgraphs: [
-            {name: 'JUCR', url: 'http://localhost:3000/graphql'}
+            {name: 'JUCR', url: 'http://api:3000/graphql'}
           ],
         })
       }
