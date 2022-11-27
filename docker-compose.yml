@@ -1,0 +1,41 @@
+version: "3"
+services:
+  mongo:
+    container_name: mongodb
+    image: mongo:3
+    restart: always
+    volumes:
+      - ./jucr/data:/data/db
+    ports:
+      - "27017:27017"    
+  gateway:
+    container_name: jucr-gateway
+    image: node:14
+    restart: always
+    working_dir: /usr/src/gateway
+    command: bash -c "npm install && npm run start:prod"
+    depends_on:
+      api:
+        condition: service_healthy
+    volumes:
+      - ./gateway/dist/:/usr/src/gateway/dist/
+      - ./gateway/package.json:/usr/src/gateway/package.json
+    ports:
+      - "3002:3002"
+  api:
+    container_name: jucr-service
+    image: node:14
+    healthcheck:
+      test: "exit 0"
+    restart: always
+    working_dir: /usr/src/jucr
+    command: bash -c "npm install && npm run start:prod"
+    environment:
+      - API_KEY=ff82541f-c8d1-4507-be67-bd07e3259c4e
+    volumes:
+      - ./jucr/dist/:/usr/src/jucr/dist/
+      - ./jucr/package.json:/usr/src/jucr/package.json
+    ports:
+      - "3000:3000"
+    links:
+      - "mongo"
