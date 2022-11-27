@@ -4,6 +4,6 @@ ENV MONGO_USERNAME=elciess
 ENV MONGO_PASSWORD=planeta05
 WORKDIR /usr/src/jucr
 COPY ./package.json .
-RUN npm install
+RUN npm install --only=prod
 COPY ./dist ./dist
 CMD npm run start:prod
