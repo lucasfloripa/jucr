@@ -1,0 +1,21 @@
+{
+  "name": "jucr",
+  "version": "1.0.0",
+  "description": "## About the test it self   Hi! First of all thank you for the opportunity given to me to take this test. I Learn alot here doing this! Thank you very much!",
+  "main": "index.js",
+  "scripts": {
+    "install": "npm install --prefix ./jucr && npm install --prefix ./gateway",
+    "start:prod": "npm run build --prefix ./jucr && npm run build --prefix ./gateway && docker-compose -f docker-compose.yml up"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasfloripa/jucr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasfloripa/jucr/issues"
+  },
+  "homepage": "https://github.com/lucasfloripa/jucr#readme"
+}

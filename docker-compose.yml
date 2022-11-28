@@ -3,7 +3,6 @@ services:
   mongo:
     container_name: mongodb
     image: mongo:3
-    restart: always
     volumes:
       - ./jucr/data:/data/db
     ports:
@@ -11,7 +10,6 @@ services:
   gateway:
     container_name: jucr-gateway
     image: node:14
-    restart: always
     working_dir: /usr/src/gateway
     command: bash -c "npm install && npm run start:prod"
     depends_on:
@@ -27,7 +25,6 @@ services:
     image: node:14
     healthcheck:
       test: "exit 0"
-    restart: always
     working_dir: /usr/src/jucr
     command: bash -c "npm install && npm run start:prod"
     environment:
